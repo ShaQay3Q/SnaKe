@@ -1,9 +1,5 @@
 package main
 
-func main() {
-
-}
-
 type position struct {
 	x, y int
 }
