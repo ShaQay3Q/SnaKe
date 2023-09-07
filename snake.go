@@ -12,6 +12,23 @@ type snake struct {
 }
 
 // Homework: re-right this function
+func bananaMove(s snake) snake {
+	s = snake{
+		body:      []position{{x: s.body[0].x, y: s.body[0].y}},
+		direction: s.direction,
+	}
+	switch s.direction {
+	case "up":
+		s.body[0].y = s.body[0].y - 1
+	case "down":
+		s.body[0].y = s.body[0].y + 1
+	case "right":
+		s.body[0].x = s.body[0].x + 1
+	case "left":
+		s.body[0].x = s.body[0].x - 1
+	}
+	return s
+}
 
 func move(s snake) (ret_s snake) {
 	if s.direction == "up" {

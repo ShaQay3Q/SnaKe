@@ -76,7 +76,7 @@ func TestSnakeRight(t *testing.T) {
 		},
 	}
 
-	snake_after_1stmove := move(snake_before_moving)
+	snake_after_1stmove := bananaMove(snake_before_moving)
 
 	expected_snake_before_moving := snake{
 		direction: direction("right"),
@@ -101,7 +101,7 @@ func TestSnakeLeft(t *testing.T) {
 		},
 	}
 
-	snake_after_1stmove := move(snake_before_moving)
+	snake_after_1stmove := bananaMove(snake_before_moving)
 
 	expected_snake_before_moving := snake{
 		direction: direction("left"),
@@ -140,10 +140,9 @@ func TestChangeDirection(t *testing.T) {
 	snake_after_changing_direction_X3 := changeDirection(snake_after_changing_direction_X2, "up")
 
 	expected_snake_after_changing_direction_X3 := snake{
-		body: []position{{x:5, y:7}},
+		body:      []position{{x: 5, y: 7}},
 		direction: direction("down"),
 	}
-
 
 	require.Equal(t, expected_snake_after_changing_direction, snake_after_changing_direction)
 	require.Equal(t, expected_snake_after_changing_direction_X2, snake_after_changing_direction_X2)
