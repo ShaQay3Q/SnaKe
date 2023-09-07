@@ -15,8 +15,8 @@ func TestSnakeUp(t *testing.T) {
 		},
 	}
 
-	snake_after_moving := move(snake_before_moving)
-	snake_after_2nd_moving := move(snake_after_moving)
+	snake_after_moving := bananaMove(snake_before_moving)
+	snake_after_2nd_moving := bananaMove(snake_after_moving)
 
 	expected := snake{
 		direction: direction("up"),
@@ -50,7 +50,7 @@ func TestSnakeDown(t *testing.T) {
 		},
 	}
 
-	snake_after_1stmove := move(snake_before_moving)
+	snake_after_1stmove := bananaMove(snake_before_moving)
 
 	expected_snake_before_moving := snake{
 		direction: direction("down"),
