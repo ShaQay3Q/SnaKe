@@ -148,3 +148,45 @@ func TestChangeDirection(t *testing.T) {
 	require.Equal(t, expected_snake_after_changing_direction_X2, snake_after_changing_direction_X2)
 	require.Equal(t, expected_snake_after_changing_direction_X3, snake_after_changing_direction_X3)
 }
+
+func TestSnakeGrowth(t *testing.T) {
+
+	snake_before_growing := snake{
+		body:      []position{{6, 10}},
+		direction: "up",
+	}
+
+	snake_after_growing_x1 := snakeGrow(snake_before_growing)
+
+	expected_snake_after_growing_x1 := snake{
+		body:      []position{{6, 9}, {6, 10}},
+		direction: "up",
+	}
+
+	snake_after_growing_x2 := snakeGrow(snake_after_growing_x1)
+
+	expected_snake_after_growing_x2 := snake{
+		body:      []position{{6, 8}, {6, 9}, {6,10}},
+		direction: "up",
+	}
+
+	require.Equal(t, expected_snake_after_growing_x1, snake_after_growing_x1)
+	require.Equal(t, expected_snake_after_growing_x2, snake_after_growing_x2)
+}
+
+func TestNewSnakeHead (t *testing.T){
+
+	snake := snake{
+		body: []position{{6,9}, {6,10}},
+		direction: "up",
+	}
+
+	snakeHead := newSnakeHead(snake)
+
+	expected_snake_head := position {6, 8}
+
+
+
+	require.Equal(t, expected_snake_head,snakeHead)
+
+}

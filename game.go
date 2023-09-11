@@ -29,6 +29,8 @@ func main() {
 	if err := ebiten.RunGame(game); err != nil {
 		panic(err)
 	}
+
+	
 }
 
 type Game struct {
