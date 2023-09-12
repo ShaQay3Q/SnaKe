@@ -26,7 +26,7 @@ func move(s snake) snake {
 	case "left":
 		s.body[0].x = s.body[0].x - 1
 	}
-	
+
 	return s
 }
 
@@ -63,16 +63,6 @@ func snakeDirection(s snake, d direction) direction {
 }
 
 func newSnakeHead(s snake) position {
-	switch s.direction {
-	case "up":
-		s.body[0].y = s.body[0].y - 1
-	case "down":
-		s.body[0].y = s.body[0].y + 1
-	case "right":
-		s.body[0].x = s.body[0].x + 1
-	case "left":
-		s.body[0].x = s.body[0].x - 1
-	}
 
 	var headPosition position
 	headPosition.x = s.body[0].x
@@ -83,12 +73,32 @@ func newSnakeHead(s snake) position {
 	return headPosition
 }
 
-func snakeGrow(s snake) (ret_s snake) {
+func snakeGrow(s snake) snake {
+	snakeHead := newSnakeHead(s)
 
-	//snakeHeadPosition.body := move(s).body
-	//s.body = append(s.body, snakeHeadPosition)
+	switch s.direction {
+	case "up":
+		snakeHead.y = snakeHead.y - 1
+	case "down":
+		snakeHead.y = snakeHead.y + 1
+	case "right":
+		snakeHead.x = snakeHead.x + 1
+	case "left":
+		snakeHead.x = snakeHead.x - 1
+	}
+	
+	ret_s := snake{
+		body:      []position{},
+		direction: s.direction,
+	}
 
-	return s
+	ret_s.body = append(ret_s.body, snakeHead)
+
+	for i := 0; i < len(s.body); i++ {
+		a := position{x: s.body[i].x, y: s.body[i].y}
+		ret_s.body = append(ret_s.body, a)
+	}
+	return ret_s
 }
 
 /*func snakeGrowth(s snake, ) (length int, capacity int, arr []position) {
