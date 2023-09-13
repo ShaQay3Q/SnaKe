@@ -196,10 +196,18 @@ func TestSnakeGrow(t *testing.T) {
 
 	snake_after_growth_x1 := snakeGrow(s)
 
+	snake_after_growth_x2 := snakeGrow(changeDirection(snake_after_growth_x1, "right"))
+
 	expected_snake_after_growth_x1 := snake{
 		body:      []position{{6, 8}, {6, 9}, {6, 10}},
 		direction: "up",
 	}
 
+	expected_snake_after_growth_x2 := snake{
+		body: []position{{7,8}, {6,8}, {6,9}, {6,10}},
+		direction: "right",
+	}
+
 	require.Equal(t, expected_snake_after_growth_x1, snake_after_growth_x1)
+	require.Equal(t, expected_snake_after_growth_x2, snake_after_growth_x2)
 }

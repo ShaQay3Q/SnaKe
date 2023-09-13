@@ -34,7 +34,7 @@ func changeDirection(s snake, d direction) snake {
 	//snake_d := snakeDirection(s, d)
 	snake_d := snakeDirection(s, d)
 	ret_s := snake{
-		body:      []position{{x: s.body[0].x, y: s.body[0].y}},
+		body:      s.body,
 		direction: snake_d,
 	}
 	return ret_s
@@ -67,8 +67,18 @@ func newSnakeHead(s snake) position {
 	var headPosition position
 	headPosition.x = s.body[0].x
 	headPosition.y = s.body[0].y
-
 	// headP := position {x: snake.body[0].x, y: snake.body[0].y}
+
+	switch s.direction {
+	case "up":
+		headPosition.y = headPosition.y - 1
+	case "down":
+		headPosition.y = headPosition.y + 1
+	case "right":
+		headPosition.x = headPosition.x + 1
+	case "left":
+		headPosition.x = headPosition.x - 1
+	}
 
 	return headPosition
 }
@@ -76,17 +86,6 @@ func newSnakeHead(s snake) position {
 func snakeGrow(s snake) snake {
 	snakeHead := newSnakeHead(s)
 
-	switch s.direction {
-	case "up":
-		snakeHead.y = snakeHead.y - 1
-	case "down":
-		snakeHead.y = snakeHead.y + 1
-	case "right":
-		snakeHead.x = snakeHead.x + 1
-	case "left":
-		snakeHead.x = snakeHead.x - 1
-	}
-	
 	ret_s := snake{
 		body:      []position{},
 		direction: s.direction,
